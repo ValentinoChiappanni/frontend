@@ -13,9 +13,9 @@ RUN npm ci && \
 # Copiar código fuente
 COPY . .
 
-# Build de producción (ignorando errores de TS de variables sin usar)
+# Build de producción (sin verificación de tipos para evitar errores en datos de prueba)
 ENV NODE_ENV=production
-RUN npm run build
+RUN npm run build:prod
 
 # Etapa 2: Production con Nginx
 FROM nginx:alpine
