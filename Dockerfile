@@ -1,6 +1,9 @@
 # Etapa 1: Build
 FROM node:20-alpine AS builder
 
+# Argumento de build para la URL del API
+ARG VITE_API_BASE_URL=http://localhost:3000
+
 WORKDIR /app
 
 # Copiar archivos de dependencias
@@ -15,6 +18,7 @@ COPY . .
 
 # Build de producción (sin verificación de tipos para evitar errores en datos de prueba)
 ENV NODE_ENV=production
+ENV VITE_API_BASE_URL=${VITE_API_BASE_URL}
 RUN npm run build:prod
 
 # Etapa 2: Production con Nginx
