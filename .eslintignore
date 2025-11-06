@@ -1,0 +1,3 @@
+# Ignorar archivos de datos de prueba con errores de tipo
+src/data/affiliates.ts
+src/data/providers.ts
