@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import type { PrestadorTipo, DireccionAtencion, DiaSemana } from "../model/Provider.model";
-import { specialtiesAPI, providersAPI } from "../services/api";
+import { specialtiesAPI, providersAPI, API_BASE_URL } from "../services/api";
 import { ButtonVolver } from "../util/ButtonVolver";
 
 type BloqueHorario = { dias: DiaSemana[]; desde: string; hasta: string };
@@ -182,7 +182,7 @@ export function AddProvider() {
       console.log("Enviando payload al backend:", JSON.stringify(payload, null, 2));
 
       // Llamar a la API
-      const response = await fetch("http://localhost:3000/providers", {
+      const response = await fetch(`${API_BASE_URL}/providers`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

@@ -10,7 +10,7 @@ import { ButtonAddAffiliate } from "../util/ButtonAddAffiliate";
 import { ButtonVolver } from "../util/ButtonVolver";
 import NavigateNextIcon from "@mui/icons-material/NavigateNext";
 import NavigateBeforeIcon from "@mui/icons-material/NavigateBefore";
-import { affiliatesAPI } from "../services/api";
+import { affiliatesAPI, API_BASE_URL } from "../services/api";
 
 // Tipo para el afiliado que viene del endpoint
 interface AffiliateFromAPI {
@@ -142,7 +142,7 @@ export function GrupoFamiliar() {
 
   const handleSaveFamiliar = async (nuevoFamiliar: any) => {
     try {
-      const response = await fetch(`http://localhost:3000/api/affiliates`, {
+      const response = await fetch(`${API_BASE_URL}/api/affiliates`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -159,7 +159,7 @@ export function GrupoFamiliar() {
       console.log("Nuevo familiar guardado:", result);
 
       // Recargar datos del grupo familiar
-      const refreshResponse = await fetch(`http://localhost:3000/api/affiliates/family/${dni}`);
+      const refreshResponse = await fetch(`${API_BASE_URL}/api/affiliates/family/${dni}`);
       const refreshedData: FamilyGroupAPIResponse = await refreshResponse.json();
       
       if (refreshedData.affiliates && refreshedData.affiliates.length > 0) {
@@ -195,7 +195,7 @@ export function GrupoFamiliar() {
 
   const handleSaveAffiliate = async (updated: Affiliate) => {
     try {
-      const response = await fetch(`http://localhost:3000/api/affiliates/${updated.dni}`, {
+      const response = await fetch(`${API_BASE_URL}/api/affiliates/${updated.dni}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -224,7 +224,7 @@ export function GrupoFamiliar() {
     if (!selectedAffiliate) return;
 
     try {
-      const response = await fetch(`http://localhost:3000/api/affiliates/${selectedAffiliate.dni}`, {
+      const response = await fetch(`${API_BASE_URL}/api/affiliates/${selectedAffiliate.dni}`, {
         method: "DELETE",
       });
 

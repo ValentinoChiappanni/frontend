@@ -7,7 +7,7 @@ import { ConfirmDeleteDialog } from "../components/ConfirmDeleteDialog";
 import { ViewAffiliatePopup } from "../components/ViewAffiliatePopup";
 import { EditAffiliatePopup } from "../components/EditAffiliatePopup";
 import SearchDropdown from "../components/SearchDropdown";
-import { affiliatesAPI } from "../services/api";
+import { affiliatesAPI, API_BASE_URL } from "../services/api";
 
 // 🔹 Pequeño Toast (notificación visual sin alert)
 const Toast = ({ message, onClose }: { message: string; onClose: () => void }) => (
@@ -142,7 +142,7 @@ export function Home() {
     if (!selectedAffiliate) return;
     try {
       await fetch(
-        `http://localhost:3000/api/affiliates/${selectedAffiliate.dni}/schedule-delete`,
+        `${API_BASE_URL}/api/affiliates/${selectedAffiliate.dni}/schedule-delete`,
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },

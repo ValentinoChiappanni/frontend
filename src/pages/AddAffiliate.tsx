@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { API_BASE_URL } from "../services/api";
 
 interface Situacion {
   situacion: string;
@@ -284,7 +285,7 @@ export function AddAffiliate() {
       console.log("Payload a enviar:", JSON.stringify(payload, null, 2));
 
       // Hacer la petición al API
-      const response = await fetch("http://localhost:3000/api/affiliates", {
+      const response = await fetch(`${API_BASE_URL}/api/affiliates`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

@@ -6,7 +6,7 @@ import { ConfirmDeleteDialog } from "./ConfirmDeleteDialog";
 import ScheduledSuccessPopup from "./BajaExitosaPopup";
 import NavigateNextIcon from "@mui/icons-material/NavigateNext";
 import NavigateBeforeIcon from "@mui/icons-material/NavigateBefore";
-import { affiliatesAPI } from "../services/api";
+import { affiliatesAPI, API_BASE_URL } from "../services/api";
 
 export type Affiliate = {
   grupoFamiliar: number;
@@ -128,7 +128,7 @@ export function AffiliatesTable({
 
     try {
       const response = await fetch(
-        `http://localhost:3000/api/affiliates/${selectedAffiliate.dni}/schedule-delete`,
+        `${API_BASE_URL}/api/affiliates/${selectedAffiliate.dni}/schedule-delete`,
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
