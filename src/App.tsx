@@ -20,7 +20,7 @@ function App() {
         <Sidebar />
         <main className="p-6 flex-1">
           <Routes>
-            {/* redirección inicial */}
+            {/* redirección inicssial */}
             <Route path="/" element={<Navigate to="/home" replace />} />
 
             {/* páginas principales */}
